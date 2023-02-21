@@ -5,7 +5,7 @@
  * Return: (status)
  */
 
-int prompt()
+int prompt(void)
 {
 	char *command = NULL;
 	char *token;
@@ -23,7 +23,10 @@ int prompt()
 
 		token = strtok(command, delim); /*spit command to token*/
 		char **arr = malloc(sizeof(char *) * n_chars); /* allocate mem for tokens*/
-		arr[0] = token; /* get first token */
+		
+		arr[0] = token; /* get first token */		
+		if (str_cmp(arr[0], "exit") == 0)/* exit if command is 'exit' */
+			exit(0);
 
 		i = 1;
 		while (token != NULL) /* getting the rest of tokens to array */
@@ -40,7 +43,8 @@ int prompt()
 			return (-1);
 		}
 		else if (child_pid == 0)
-			execve(arr[0], arr, NULL);
+			/*execve(arr[0], arr, NULL);*/
+			exe_cmd(arr);
 		else
 			wait(&status);
 	}
