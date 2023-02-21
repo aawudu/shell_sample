@@ -9,4 +9,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+int prompt();
+
 #endif

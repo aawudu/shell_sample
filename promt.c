@@ -18,7 +18,7 @@ int prompt()
 
 	while (1)
 	{
-		printf("$ ");
+		printf("prompt $ ");
 		n_chars = getline(&command, &len, stdin);
 
 		token = strtok(command, delim); /*spit command to token*/

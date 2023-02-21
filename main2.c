@@ -1,4 +1,4 @@
-#include "main.c"
+#include "main.h"
 
 /**
  * main -entry to program
@@ -8,5 +8,6 @@
 
 int main(void)
 {
+	prompt();
 	return (0);
 }
