@@ -8,10 +8,18 @@
 void exe_cmd(char **argv)
 {
 	char *command = NULL, *actual_command = NULL;
+	pid_t my_pid;
 
 	if (argv)
 	{
-		if (execve(argv[0], argv, NULL) == -1)
-			perror("Error:");
+		command = get_location(argv[0]);
+
+		if (command)
+		{
+			if (execve(command, argv, NULL) == -1)
+				perror("Error:");
+		}
+		else
+			printf("Command not found");
 	}
 }

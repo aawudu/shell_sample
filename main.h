@@ -8,7 +8,11 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
+int _strcmp(char a[], char b[]);
 int prompt();
+char *get_location(char *command);
+void exe_cmd(char **argv);
 
 #endif

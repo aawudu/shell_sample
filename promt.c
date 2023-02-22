@@ -25,7 +25,7 @@ int prompt(void)
 		char **arr = malloc(sizeof(char *) * n_chars); /* allocate mem for tokens*/
 		
 		arr[0] = token; /* get first token */		
-		if (str_cmp(arr[0], "exit") == 0)/* exit if command is 'exit' */
+		if (_strcmp(arr[0], "exit") == 0)/* exit if command is 'exit' */
 			exit(0);
 
 		i = 1;
@@ -39,7 +39,7 @@ int prompt(void)
 		child_pid = fork(); /*create another process*/
 		if (child_pid == -1)
 		{
-			perror("Error");
+			perror("Error:");
 			return (-1);
 		}
 		else if (child_pid == 0)
@@ -47,8 +47,8 @@ int prompt(void)
 			exe_cmd(arr);
 		else
 			wait(&status);
-	}
 
+	}
 	free(command);
 	return (0);
 }
